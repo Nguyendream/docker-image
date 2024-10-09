@@ -1,7 +1,7 @@
 FROM golang:alpine AS builder
 
 WORKDIR /app
-RUN apk add --no-cache git && go mod download 
+RUN apk update && apk add --no-cache git bash && go mod download 
 
 RUN git clone https://github.com/linux-do/override.git .
 
