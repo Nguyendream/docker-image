@@ -1,9 +1,12 @@
 FROM golang:alpine AS builder
 
 WORKDIR /app
-RUN apk update && apk add --no-cache git bash && go mod download 
+
+RUN apk update && apk add --no-cache git bash
 
 RUN git clone https://github.com/linux-do/override.git .
+
+RUN go mod download 
 
 RUN CGO_ENABLED=0 go build -ldflags="-w -s" -o override
 
