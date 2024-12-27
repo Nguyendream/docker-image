@@ -10,6 +10,11 @@ on:
     branches: [ master ]
     paths: 
       - 'caddy/*'
+  workflow_dispatch:
+    inputs:
+      build_version:
+        description: 'Caddy version to build (e.g., 2.8.4)'
+        required: false
 
 jobs:
 
@@ -37,8 +42,6 @@ jobs:
         run: |
           if [ -n "${{ github.event.inputs.build_version }}" ]; then
             CADDY_VERSION=$(echo "${{ github.event.inputs.build_version }}" | sed 's/^v//')
-          elif [ -n "${{ github.event.client_payload.latest_version }}" ]; then
-            CADDY_VERSION=$(echo "${{ github.event.client_payload.latest_version }}" | sed 's/^v//')
           else
             CADDY_VERSION=$(cat version)
           fi
