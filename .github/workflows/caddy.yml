@@ -1,4 +1,4 @@
-name: Override Docker Image CI
+name: Caddy Docker Image CI
 
 on:
   push:
