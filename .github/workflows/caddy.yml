@@ -43,7 +43,7 @@ jobs:
           if [ -n "${{ github.event.inputs.build_version }}" ]; then
             CADDY_VERSION=$(echo "${{ github.event.inputs.build_version }}" | sed 's/^v//')
           else
-            CADDY_VERSION=$(cat version)
+            CADDY_VERSION=$(cat caddy/version)
           fi
           echo "CADDY_VERSION=$CADDY_VERSION" >> $GITHUB_ENV
       -
