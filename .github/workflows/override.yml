@@ -38,4 +38,4 @@ jobs:
           context: ./override
           platforms: linux/amd64
           push: true
-          tags: nguyendream/override:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/override:latest
